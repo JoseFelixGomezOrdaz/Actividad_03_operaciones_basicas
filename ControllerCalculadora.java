@@ -3,12 +3,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import views.ViewCalculadora;
 import models.ModelCalculadora;
+import extras.DataValidation;
 
 public class ControllerCalculadora{
     ModelCalculadora modelcalculadora;
     ViewCalculadora viewcalculadora;
     ActionListener actionlistener;
-
+    DataValidation datavalidation = new DataValidation();
     public ControllerCalculadora() {
         this.actionlistener = new ActionListener() {
             @Override
@@ -71,8 +72,8 @@ public class ControllerCalculadora{
     
 
     public void ObtenerValores() {
-        modelcalculadora.setNumero1(Float.parseFloat(viewcalculadora.jtf_numero1.getText()));
-        modelcalculadora.setNumero2(Float.parseFloat(viewcalculadora.jtf_numero2.getText()));
+        modelcalculadora.setNumero1(datavalidation.stringFloat(viewcalculadora.jtf_numero1.getText()));
+        modelcalculadora.setNumero2(datavalidation.stringFloat(viewcalculadora.jtf_numero2.getText()));
     }
     public void Asignacion() {
         modelcalculadora.setResultado2(Float.toString(modelcalculadora.resultado1));
